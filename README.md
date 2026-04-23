@@ -1,6 +1,3 @@
-# aljo-projekat-6
-Moj projektni zadatak iz ingormatike
-
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -114,18 +111,14 @@ public:
 
     void sacuvajUFajl() {
         ofstream fajl("narudzbe.txt");
-
         for (int i = 0; i < narudzbe.size(); i++) {
-            fajl << narudzbe[i]->getKolicina() << " "
-                 << narudzbe[i]->getPotvrdjena() << endl;
+            fajl << narudzbe[i]->getKolicina() << " " << narudzbe[i]->getPotvrdjena() << endl;
         }
-
         fajl.close();
     }
 
     void ucitajIzFajla() {
         ifstream fajl("narudzbe.txt");
-
         int k;
         bool p;
 
@@ -169,17 +162,12 @@ int main() {
         Narudzba* n = new Narudzba(broj, stanje);
         sistem.dodaj(n);
 
-        cout << "Da li zelis unijeti jos jednu narudzbu?" << endl;
-        cout << "1 - Da" << endl;
-        cout << "2 - Ne" << endl;
+        cout << "1 - Da\n2 - Ne\n";
         cin >> izbor;
 
-        while (izbor != 1 && izbor != 2) {
-            cout << "Pogresan unos. Unesi 1 ili 2: ";
-            cin >> izbor;
-        }
-
     } while (izbor == 1);
+
+    sistem.sacuvajUFajl();
 
     cout << endl;
     cout << "Sve narudzbe:" << endl;
@@ -190,8 +178,6 @@ int main() {
     cout << "Unesi kolicinu za pretragu: ";
     cin >> broj;
     sistem.pretrazi(broj);
-
-    sistem.sacuvajUFajl();
 
     return 0;
 }
